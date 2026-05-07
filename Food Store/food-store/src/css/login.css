@@ -1,0 +1,128 @@
+/* ===== VARIABLES CSS ===== */
+:root {
+  --color-primario: #ff6347;
+  --color-fondo: #f0f0f0;
+  --color-texto: #333;
+  --color-blanco: #fff;
+  --color-borde: #ddd;
+  --color-focus: #ff4500;
+}
+
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== PÁGINA COMPLETA ===== */
+body {
+  background-color: var(--color-fondo);
+  font-family: Arial, sans-serif;
+  color: var(--color-texto);
+}
+
+/* ===== CONTENEDOR CENTRADO (Flexbox) ===== */
+.contenedor-pagina {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ===== TARJETA DEL FORMULARIO (Box Model) ===== */
+.tarjeta-login {
+  background-color: var(--color-blanco);
+  width: 360px;
+  padding: 40px 36px;
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+/* ===== TÍTULO ===== */
+.titulo {
+  text-transform: uppercase;
+  color: var(--color-primario);
+  font-size: 2rem;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+/* ===== SUBTÍTULO ===== */
+.subtitulo {
+  color: var(--color-texto);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+/* ===== CAMPOS DEL FORMULARIO ===== */
+.campo {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: var(--color-texto);
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-borde);
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+/* ===== PSEUDOCLASE :focus ===== */
+input:focus {
+  border-color: var(--color-focus);
+}
+
+/* ===== BOTÓN ===== */
+.btn-ingresar {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: var(--color-primario);
+  color: var(--color-blanco);
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* ===== PSEUDOCLASE :hover en botón ===== */
+.btn-ingresar:hover {
+  background-color: var(--color-focus);
+}
+
+/* ===== ENLACE DE REGISTRO ===== */
+.enlace-registro {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--color-texto);
+}
+
+.enlace-registro a {
+  color: var(--color-primario);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.enlace-registro a:hover {
+  text-decoration: underline;
+}

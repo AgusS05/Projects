@@ -1,0 +1,702 @@
+/* ============================================
+   FOOD STORE — styles.css
+   Estética: Warm Bistro Dark
+   Fuentes: Playfair Display + DM Sans
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── Variables ── */
+:root {
+  --bg:          #0f0d0b;
+  --surface:     #1a1714;
+  --surface-2:   #242018;
+  --border:      #2e2a24;
+  --accent:      #e8a230;
+  --accent-dark: #c4841a;
+  --accent-glow: rgba(232, 162, 48, 0.18);
+  --red:         #d94f38;
+  --text:        #f0ebe3;
+  --text-muted:  #8a8070;
+  --text-subtle: #5a5448;
+  --radius:      14px;
+  --radius-sm:   8px;
+  --shadow:      0 4px 24px rgba(0,0,0,0.5);
+  --transition:  0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /* Ruido de fondo sutil */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232,162,48,0.07) 0%, transparent 60%);
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 64px;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+header h1::before {
+  content: "🍔";
+  font-size: 1.3rem;
+}
+
+header nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition);
+  letter-spacing: 0.02em;
+}
+
+header nav a:hover {
+  color: var(--text);
+  background: var(--accent-glow);
+}
+
+header nav a:last-child {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  margin-left: 0.5rem;
+}
+
+header nav a:last-child:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ── ASIDE — Categorías ── */
+aside {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+aside hr { display: none; }
+
+aside h3 {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-subtle);
+  margin-right: 1.5rem;
+}
+
+/* Lista de categorías como pills horizontales */
+aside ul {
+  display: inline-flex;
+  gap: 0.5rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+aside ul li a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+  display: inline-block;
+}
+
+aside ul li a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/*  MAIN  */
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2.5rem 2rem 4rem;
+}
+
+/*  FORMULARIO DE BÚSQUEDA  */
+form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  max-width: 520px;
+}
+
+form label {
+  display: none; /* oculto visualmente, accesible */
+}
+
+form input[type="text"] {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.1rem;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+form input[type="text"]::placeholder {
+  color: var(--text-subtle);
+}
+
+form input[type="text"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+form button[type="submit"] {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.4rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+form button[type="submit"]:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+/* ── TÍTULO DE SECCIÓN ── */
+main > h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+main > h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+/* ── GRID DE PRODUCTOS ── */
+#contenedor-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── CARD DE PRODUCTO (article generado por JS) ── */
+#contenedor-productos article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  animation: fadeUp 0.4s ease both;
+}
+
+#contenedor-productos article:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow), 0 0 0 1px var(--accent);
+  border-color: var(--accent);
+}
+
+/* Animación de entrada escalonada */
+#contenedor-productos article:nth-child(1) { animation-delay: 0.05s; }
+#contenedor-productos article:nth-child(2) { animation-delay: 0.12s; }
+#contenedor-productos article:nth-child(3) { animation-delay: 0.19s; }
+#contenedor-productos article:nth-child(4) { animation-delay: 0.26s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Imagen del producto */
+#contenedor-productos article img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+#contenedor-productos article:hover img {
+  transform: scale(1.04);
+}
+
+/* Contenedor de texto dentro del article */
+#contenedor-productos article h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  padding: 1rem 1.1rem 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+#contenedor-productos article p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 0 1.1rem;
+  line-height: 1.55;
+  flex: 1;
+}
+
+/* Precio */
+#contenedor-productos article p:last-of-type {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding: 0.6rem 1.1rem 0;
+  flex: 0;
+}
+
+#contenedor-productos article p:last-of-type strong {
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Botones dentro de la card */
+#contenedor-productos article button {
+  margin: 1rem 1.1rem 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.825rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+/* "Ver Detalles" — secundario */
+#contenedor-productos article button:first-of-type {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+#contenedor-productos article button:first-of-type:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+/* "Agregar al Carrito" — principal */
+#contenedor-productos article button:last-of-type {
+  background: var(--accent);
+  color: var(--bg);
+  margin-bottom: 1.1rem;
+}
+
+#contenedor-productos article button:last-of-type:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+}
+
+footer p {
+  color: var(--text-subtle);
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  header nav {
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    gap: 0.25rem;
+  }
+
+  header h1 {
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  aside {
+    padding: 0.75rem 1rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  form {
+    max-width: 100%;
+  }
+
+  #contenedor-productos {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ── PANEL ADMIN ── */
+
+/* Título del panel */
+main > h2 + table,
+main > h2 {
+  width: 100%;
+}
+
+/* Tabla de productos */
+#tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+#tabla-productos thead {
+  background: var(--surface-2);
+}
+
+#tabla-productos th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-subtle);
+  border-bottom: 1px solid var(--border);
+}
+
+#tabla-productos td {
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+#tabla-productos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+#tabla-productos tbody tr:hover {
+  background: var(--surface-2);
+}
+
+#tabla-productos td img {
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+#contenedor-carrito article img {
+  width: 100%;
+  max-width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Formulario admin */
+#form-admin {
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  gap: 0.25rem;
+}
+
+#form-admin label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-subtle);
+  margin-top: 1rem;
+}
+
+#form-admin input,
+#form-admin select,
+#form-admin textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  width: 100%;
+}
+
+#form-admin input:focus,
+#form-admin select:focus,
+#form-admin textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+#form-admin select option {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+#form-admin textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#form-admin button[type="submit"] {
+  margin-top: 1.5rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.4rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  align-self: flex-start;
+}
+
+#form-admin button[type="submit"]:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+
+/* ── Layout carrito ── */
+#layout-carrito {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+#contenedor-carrito {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── Cada producto en el carrito ── */
+.carrito-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--color-surface, #2a2a2a);
+}
+
+.carrito-item img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.carrito-item-info {
+  flex: 1;
+}
+
+.carrito-item-info h3 {
+  margin: 0 0 0.25rem;
+}
+
+.carrito-item-subtotal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+/* ── Controles de cantidad ── */
+.cantidad-controles {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.cantidad-controles button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.cantidad-numero {
+  font-size: 1.1rem;
+  font-weight: bold;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+/* ── Panel resumen ── */
+#resumen-carrito {
+  flex: 1;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--color-surface, #2a2a2a);
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resumen-linea {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+#btn-finalizar {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#msg-finalizar {
+  font-size: 0.85rem;
+  text-align: center;
+  opacity: 0.8;
+  min-height: 1.2rem;
+}
+
+#btn-vaciar {
+  padding: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  opacity: 0.7;
+}
+
+.carrito-vacio {
+  text-align: center;
+  opacity: 0.7;
+  font-size: 1.1rem;
+  padding: 2rem;
+}
+
+/* Tamaño general más grande */
+.carrito-item {
+  padding: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.carrito-item img {
+  width: 110px;
+  height: 110px;
+}
+
+/* X más oscura */
+.btn-eliminar {
+  color: #888;
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  color: #cc4444;
+}
